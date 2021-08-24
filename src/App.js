@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 const App = () => {
-  const [value1, setValue1] = useState(0);
-  const [value2, setValue2] = useState(0);
+  const [value1, setValue1] = useState(1);
+  const [value2, setValue2] = useState(2);
   const [show, setDislay] = useState(true);
 
   const dislayTotal = () => {
@@ -13,7 +13,7 @@ const App = () => {
   return (
     <div>
       <form>
-        <div style={{display:show ? 'inline' : 'none'  }}>
+        <label htmlFor="">Tổng :</label> <div style={{display:show ? 'inline' : 'none'  }}>
           {Number(value1) + Number(value2)}
         </div>
         <br />
@@ -21,6 +21,7 @@ const App = () => {
           type="text"
           name=""
           id="1"
+          value={value1}
           onChange={(event) => setValue1(event.target.value)}
         />
         <br />
@@ -28,6 +29,7 @@ const App = () => {
           type="text"
           name=""
           id="2"
+          value={value2}
           onChange={(event) => setValue2(event.target.value)}
         />
 
