@@ -1,26 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 
 const App = () => {
-  const total = () => {
-    console.log("hello");
+  const [value1, setValue1] = useState(0);
+  const [value2, setValue2] = useState(0);
+  const [show, setDislay] = useState(true);
+
+  const dislayTotal = () => {
+    setDislay(!show);
+    console.log(show);
   };
-  const onHandleChange = () => {
-    console.log("on handle change!!!");
-    let gt1 = document.getElementById("1");
-    let gt2 = document.getElementById("2");
-    document.querySelector("p").innerHTML = Number(gt1.value) + Number(gt2.value);
-  };
+
   return (
     <div>
       <form>
-        <input type="text" name="" id="1" onChange={() => onHandleChange()} />
+        <div style={{display:show ? 'inline' : 'none'  }}>
+          {Number(value1) + Number(value2)}
+        </div>
         <br />
-        <input type="text" name="" id="2" onChange={() => onHandleChange()} />
+        <input
+          type="text"
+          name=""
+          id="1"
+          onChange={(event) => setValue1(event.target.value)}
+        />
+        <br />
+        <input
+          type="text"
+          name=""
+          id="2"
+          onChange={(event) => setValue2(event.target.value)}
+        />
 
         <p></p>
       </form>
 
-      <button onClick={() => total()}>tong</button>
+      <button onClick={() => dislayTotal()}>
+        {show == true ? "Hiện" : "Ẩn"}
+      </button>
     </div>
   );
 };
